@@ -12,6 +12,8 @@ const listData = async(req,res)=>{
     res.json(listGet)
 }
 const singleData = async(req,res)=>{
+    const viewData = await employeeSchema.findById(regNo=req.params);
+    if(!viewData) return res.json("regNo not valid")
     const data = await employeeSchema.find(regNo=req.params);
     res.json(data);
 }
