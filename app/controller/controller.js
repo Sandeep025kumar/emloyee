@@ -29,6 +29,8 @@ const upData = async(req,res)=>{
     res.json({msg:"updated successfully",data:datas})
 }
 const deleteData = async(req,res)=>{
+    const deleteData = await employeeSchema.findById(req.params.id);
+    if(!deleteData) return res.json("id is not valid")
     const removeData = await employeeSchema.findByIdAndDelete(req.params.id)
     res.json({msg:"data deleted successfully"})
 }
